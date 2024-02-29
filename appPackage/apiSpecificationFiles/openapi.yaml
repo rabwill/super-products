@@ -1,0 +1,54 @@
+openapi: 3.0.0
+info:
+  title: Fake products API
+  description: An API for getting fake products
+  version: 1.0.0
+servers:
+  - url: https://superfake.azurewebsites.net/api
+    description: Production server
+paths:
+  /products:
+    get:
+      operationId: products
+      summary: List all products
+      description: Retrieve a list of products.
+      parameters:
+        - name: name
+          in: query
+          description: Filter products by title.
+          schema:
+            type: string
+          required: false
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Id:
+                    type: integer
+                    description: The id of the product
+                  Title:
+                    type: string
+                    description: The title or name of the product
+                  Price:
+                    type: string
+                    description: The price of the products
+                  Description:
+                    type: integer
+                    description: The description of the product
+                  Category:
+                    type: string
+                    description: The category of the product
+                  Image:
+                    type: string
+                    format: uri
+                    description: The product image
+                  Rate:
+                    type: number
+                    description: The start rating of the product
+                  Stock:
+                    type: integer
+                    description: The quantity of the product in stock

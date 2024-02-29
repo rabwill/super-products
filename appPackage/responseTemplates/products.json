@@ -1,0 +1,94 @@
+{
+  "version": "devPreview",
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/vDevPreview/MicrosoftTeams.ResponseRenderingTemplate.schema.json",
+  "jsonPath": "$",
+  "responseLayout": "list",
+  "responseCardTemplate": {
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.5",
+    "body": [
+        {
+            "type": "Container",
+            "style": "default",
+            "items": [
+                {
+                    "type": "Image",
+                    "url": "${Image}",
+                    "altText": "Product Image",
+                    "size": "Stretch"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "${Title}",
+                    "weight": "Bolder",
+                    "size": "Medium",
+                    "wrap": true,
+                    "separator": true
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "${Category}",
+                    "spacing": "Small",
+                    "color": "Light",
+                    "separator": true
+                },
+                {
+                    "type": "TextBlock",
+                    "text": " ${Rate}",
+                    "spacing": "None",
+                    "color": "Accent",
+                    "isSubtle": true
+                },
+                {
+                  "type": "TextBlock",
+                  "color": "${if(Stock > 0, 'good', 'warning')}",
+                  "text": "${if(Stock > 0, 'In stock', 'Out of stock')}",
+                  "wrap": true
+                },
+                {
+                  "type": "TextBlock",
+                  "text": " ${Stock} left",
+                  "wrap": true,
+                  "weight": "Bolder"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "${Description}",
+                    "wrap": true,
+                    "fontType": "Default",
+                    "isSubtle": false,
+                    "horizontalAlignment": "Left",
+                    "spacing": "Padding"
+                },
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": "auto",
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "text": "$ ${Price}",
+                                    "spacing": "None",
+                                    "weight": "Bolder"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+  },
+  "previewCardTemplate": {
+    "title": "Title: ${Title}",
+    "subtitle": "Stock: ${Stock}",
+    "image": {
+      "url": "${Image}",
+      "alt": "${if(Title, Title, 'N/A')}",
+      "$when": "${Image != null}"
+    }
+  }
+}

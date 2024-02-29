@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/vDevPreview/MicrosoftTeams.schema.json",
+  "manifestVersion": "devPreview",
+  "version": "1.0.0",
+  "id": "${{TEAMS_APP_ID}}",
+  "packageName": "com.microsoft.teams.extension",
+  "developer": {
+    "name": "Teams App, Inc.",
+    "websiteUrl": "https://www.example.com",
+    "privacyUrl": "https://www.example.com/termofuse",
+    "termsOfUseUrl": "https://www.example.com/privacy"
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "SuperProducts${{APP_NAME_SUFFIX}}",
+    "full": "Full name for SuperProducts"
+  },
+  "description": {
+    "short": "Fake products API",
+    "full": "An API for getting fake products"
+  },
+  "accentColor": "#FFFFFF",
+  "composeExtensions": [
+    {
+      "composeExtensionType": "apiBased",
+      "apiSpecificationFile": "apiSpecificationFiles/openapi.yaml",
+      "commands": [
+        {
+          "context": [
+            "compose"
+          ],
+          "type": "query",
+          "title": "List all products",
+          "id": "products",
+          "parameters": [
+            {
+              "name": "name",
+              "title": "Name",
+              "description": "Filter products by title."
+            }
+          ],
+          "description": "Retrieve a list of products.",
+          "apiResponseRenderingTemplateFile": "responseTemplates/products.json"
+        }
+      ]
+    }
+  ],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": []
+}
